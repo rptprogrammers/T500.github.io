@@ -1,0 +1,93 @@
+body {
+ margin: 0;
+  font-family: 'Segoe UI', 'Noto Sans Hebrew', sans-serif;
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  background-image: url("https://www.transparenttextures.com/patterns/subtle-grunge.png");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+/* הצמדה לראש הדף */
+.elegant-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.logo-wrapper {
+  width: 100px; /* או יותר אם תרצי אייקון גדול יותר */
+  height: 100px;
+  background-color: transparent;  /* במקום לבן */
+  border: none;
+  border-radius: 0; /* מבטל את העיגול */
+  box-shadow: none; /* אם לא רוצים צל */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-wrapper img {
+  width: 60%;
+  height: 100%;
+  object-fit: contain;
+}
+.large-logo {
+  width: 120px;
+  height: 100%;
+}
+.large-logo-1 {
+  width: 120px;
+  height: 100%;
+}
+
+.large-logo img {
+  width: 120%;
+  height: 100%;
+}
+
+
+.center-box {
+  text-align: center;
+  padding: 0 20px;
+  border-left: 1px solid #444;
+  border-right: 1px solid #444;
+}
+
+.top-text,
+.bottom-text {
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  color: #555;
+  margin: 3px 0;
+}
+
+.main-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #1c1f2b;
+  margin: 5px 0;
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  font-size: 0.5rem;
+  color: #2a2d3b;
+  margin: 0 0 5px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+/* מרווח גוף מתחת להדר */
+main {
+  padding-top: 80px; /* כדי שה-header לא יסתיר תוכן */
+}
