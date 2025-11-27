@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>נמר אחזקה</title>
+
   <link rel="stylesheet" href="title.css">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <audio id="modelSound" src="sound.mp3" preload="auto"></audio>
+
+  <!-- AUDIO FILE -->
+  <audio id="modelSound" src="sound.mp3" preload="auto" loop muted></audio>
 
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
     .model-container {
       max-width: 90vw;
@@ -19,55 +26,105 @@
       width: 100%;
       height: 70vh;
     }
+
+    /* 🔊 SOUND BUTTON */
+    .sound-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      font-size: 28px;
+      background: rgba(0, 0, 0, .65);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.25s;
+      z-index: 99;
+    }
+    .sound-btn:hover {
+      background: rgba(0, 0, 0, .88);
+      transform: scale(1.10);
+    }
   </style>
 </head>
+
 <body>
+
   <header class="elegant-header">
     <div class="logo-wrapper right large-logo">
-  <img src="image/logo1.png" alt="לוגו ימני" />
-</div>
-    <div class="center-box">
-      <p class="top-text"> </p>
-      <h1 class="main-title">בהוקרה ממנת"ק</h1>
-      <p class="bottom-text"> </p>
+      <img src="image/logo1.png" alt="לוגו ימני" />
     </div>
-    <div class="logo-wrapper left left large-logo-1 ">
+
+    <div class="center-box">
+      <h1 class="main-title">בהוקרה ממנת"ק</h1>
+    </div>
+
+    <div class="logo-wrapper left left large-logo-1">
       <img src="image/logo2.png" alt="לוגו שמאלי" />
     </div>
   </header>
 
-  <!-- תוכן בהמשך הדף -->
   <main>
-    <section style="padding: 60px 35px ; font-size: 1.5rem;">
-     <div class="model-container">
-		<model-viewer id="viewer"
-		  skybox-image="spruit_sunrise_1k_HDR.jpg" skybox-height="4m"
-		  max-camera-orbit="auto 100deg auto"
-		  src="25-100M.glb" 
-		  ios-src="25-100M.usdz"
-		  alt="Model 1" 
-		  auto-rotate 
-		  camera-controls 
-		  ar 
-		  ar-modes="scene-viewer quick-look webxr"
-		  shadow-intensity="2"
-		  autoplay>
-		</model-viewer>
-	</div>
+    <section style="padding: 60px 35px; font-size: 1.5rem;">
+      <div class="model-container">
+
+        <model-viewer id="viewer"
+          src="25-100M.glb"
+          ios-src="25-100M.usdz"
+          alt="Model 1"
+          auto-rotate
+          camera-controls
+          ar
+          ar-modes="scene-viewer quick-look webxr"
+          shadow-intensity="2"
+          skybox-image="spruit_sunrise_1k_HDR.jpg"
+          skybox-height="4m"
+          max-camera-orbit="auto 100deg auto">
+        </model-viewer>
+
+      </div>
     </section>
   </main>
-</body>
-<script>
-  const viewer = document.getElementById("viewer");
-  const sound  = document.getElementById("modelSound");
 
-	viewer.addEventListener("model-visibility", () => {
-	  sound.volume = 0;
-	  sound.play();
-	  let fade = setInterval(() => {
-		if (sound.volume < 1) sound.volume += 0.05;
-		else clearInterval(fade);
-	  }, 200);
-	});
-</script>
+  <!-- 🔘 SOUND TOGGLE BUTTON -->
+  <button id="soundToggle" class="sound-btn">🔊</button>
+
+  <script>
+    const viewer = document.getElementById("viewer");
+    const sound  = document.getElementById("modelSound");
+    const button = document.getElementById("soundToggle");
+
+    sound.loop = true;
+    sound.volume = 1;
+
+    // Start playing muted when model loads
+    viewer.addEventListener("model-visibility", () => {
+      sound.play();
+    });
+
+    // First user tap on model → unlock audio
+    viewer.addEventListener("click", () => {
+      sound.muted = false;
+    });
+
+    // Button toggles play/pause
+    button.addEventListener("click", () => {
+      if (sound.paused) {
+        sound.muted = false;
+        sound.play();
+        button.textContent = "🔊";
+      } else {
+        sound.pause();
+        button.textContent = "🔈";
+      }
+    });
+  </script>
+
+</body>
 </html>
