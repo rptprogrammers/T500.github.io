@@ -61,9 +61,13 @@
   const viewer = document.getElementById("viewer");
   const sound  = document.getElementById("modelSound");
 
-  viewer.addEventListener("model-visibility", () => {
-    console.log("Model ready");
-    sound.play();
-  });
+	viewer.addEventListener("model-visibility", () => {
+	  sound.volume = 0;
+	  sound.play();
+	  let fade = setInterval(() => {
+		if (sound.volume < 1) sound.volume += 0.05;
+		else clearInterval(fade);
+	  }, 200);
+	});
 </script>
 </html>
