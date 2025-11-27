@@ -29,24 +29,25 @@
 
     /* 🔊 SOUND BUTTON */
     .sound-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      font-size: 28px;
-      background: rgba(0, 0, 0, .65);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: 0.25s;
-      z-index: 99;
-    }
+	  position: fixed;
+	  bottom: 30px;
+	  left: 30px;   
+	  font-size: 28px;
+	  background: rgba(0, 0, 0, .65);
+	  color: #fff;
+	  border: none;
+	  border-radius: 50%;
+	  width: 60px;
+	  height: 60px;
+	  cursor: pointer;
+	  backdrop-filter: blur(10px);
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  transition: 0.25s;
+	  z-index: 99;
+	}
+
     .sound-btn:hover {
       background: rgba(0, 0, 0, .88);
       transform: scale(1.10);
@@ -75,12 +76,14 @@
       <div class="model-container">
 
         <model-viewer id="viewer"
-          src="25-100M.glb?sound=sound.mp3"
-          ios-src="25-100M.usdz?sound=sound.mp3"
+          src="MK.glb?sound=sound.mp3"
+          ios-src="MK.usdz?sound=sound.mp3"
           alt="Model 1"
           auto-rotate
           camera-controls
+		  ar-scale="fixed"
           ar
+		  ar-scale="fixed"
           ar-modes="scene-viewer quick-look webxr"
           shadow-intensity="2"
           skybox-image="spruit_sunrise_1k_HDR.jpg"
