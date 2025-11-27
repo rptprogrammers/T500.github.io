@@ -103,11 +103,6 @@
     sound.loop = true;
     sound.volume = 1;
 
-    // Start playing muted when model loads
-    viewer.addEventListener("model-visibility", () => {
-      sound.play();
-    });
-
     // First user tap on model → unlock audio
     viewer.addEventListener("click", () => {
       sound.muted = false;
