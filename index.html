@@ -6,6 +6,15 @@
   <title>נמר אחזקה</title>
   <link rel="stylesheet" href="title.css">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <audio id="modelSound" src="sound.mp3" preload="auto"></audio>
+<script>
+  const viewer = document.getElementById("viewer");
+  const sound  = document.getElementById("modelSound");
+
+  viewer.addEventListener("load", () => {
+    sound.play(); 
+  });
+</script>
   <style>
 
     .model-container {
@@ -38,7 +47,7 @@
   <main>
     <section style="padding: 60px 35px ; font-size: 1.5rem;">
      <div class="model-container">
-		<model-viewer 
+		<model-viewer id="viewer"
 		  skybox-image="spruit_sunrise_1k_HDR.jpg" skybox-height="4m"
 		  max-camera-orbit="auto 100deg auto"
 		  src="25-100M.glb" 
@@ -55,4 +64,5 @@
     </section>
   </main>
 </body>
+
 </html>
